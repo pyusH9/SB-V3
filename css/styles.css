@@ -1,30 +1,58 @@
-/* General Styles */
+/* ===============================
+   GENERAL
+================================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: 'Georgia', serif;
     background-color: #f5f0e6;
     color: #2b1f0f;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
+
+/* ===============================
+   HEADER
+================================= */
 header {
     background-color: #111;
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 50px;
+    padding: 15px 50px;
     position: sticky;
     top: 0;
     z-index: 100;
 }
+
+header .logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 header nav a {
     color: #fff;
-    margin: 0 10px;
+    margin: 0 12px;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
-header nav a:hover { color: #c0a878; }
 
+header nav a:hover {
+    color: #c0a878;
+}
+
+/* ===============================
+   HERO
+================================= */
 .hero {
     background-image: url('https://images.unsplash.com/photo-1542551765-df8ce1c3c020?w=1600');
     background-size: cover;
@@ -35,69 +63,128 @@ header nav a:hover { color: #c0a878; }
     align-items: center;
     text-align: center;
     color: #fff;
+    padding: 20px;
 }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: 3em; margin: 0;}
-.hero p { font-size: 1.5em; }
 
-.grid, .carousel {
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.5rem;
+}
+
+/* ===============================
+   GRID & CARDS
+================================= */
+.grid,
+.carousel {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 50px;
     justify-content: center;
 }
+
 .card {
     position: relative;
     overflow: hidden;
     cursor: pointer;
     background: #fffaf0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
 }
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
+
 .card img {
     width: 100%;
+    height: 200px;
+    object-fit: cover;
     display: block;
 }
-.card-text { padding: 10px; }
-.small-card { width: 200px; }
-.wide-card { width: 420px; }
-.tall-card { width: 200px; height: 400px; }
+
+.card-text {
+    padding: 15px;
+}
+
+.card-text h3 {
+    margin: 0 0 5px 0;
+}
+
+.small-card { width: 220px; }
+.wide-card { width: 450px; }
+.tall-card { width: 220px; height: 420px; }
+
+/* ===============================
+   MODAL
+================================= */
 .modal {
     display: none;
     position: fixed;
     z-index: 200;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
     overflow-y: auto;
-    background-color: rgba(0,0,0,0.8);
 }
+
 .modal-content {
     background-color: #f5f0e6;
-    margin: 50px auto;
-    padding: 20px;
-    width: 80%;
+    margin: 60px auto;
+    padding: 30px;
+    width: 90%;
     max-width: 800px;
-    border-radius: 10px;
+    border-radius: 15px;
     color: #2b1f0f;
     text-align: center;
+    animation: slideUp 0.4s ease;
 }
-.modal-content img { width: 100%; margin-bottom: 20px; }
+
+.modal-content img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
 .close {
-    color: #111;
-    float: right;
-    font-size: 28px;
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    font-size: 30px;
     font-weight: bold;
     cursor: pointer;
+    color: #111;
 }
-.close:hover { color: #c0a878; }
 
+.close:hover {
+    color: #c0a878;
+}
+
+/* Prevent scroll when modal open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* ===============================
+   FOOTER
+================================= */
 footer {
     background-color: #111;
     color: #fff;
@@ -105,20 +192,98 @@ footer {
     padding: 20px;
 }
 
-/* Scroll Fade-in Animation */
-.card { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.card.visible { opacity: 1; transform: translateY(0); }
+/* ===============================
+   FORMS
+================================= */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 50%;
+    margin: 40px auto;
+}
 
-/* Forms */
-form { display: flex; flex-direction: column; gap: 10px; width: 50%; margin: auto; }
-input, textarea, button { padding: 10px; border-radius: 5px; border: 1px solid #c0a878; font-family: inherit; }
-button { background-color: #c0a878; color: #111; border: none; cursor: pointer; transition: background 0.3s; }
-button:hover { background-color: #a8855a; }
+input,
+textarea,
+button {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #c0a878;
+    font-family: inherit;
+}
 
-/* Responsive */
-@media(max-width:768px){
-    header { flex-direction: column; gap: 10px; }
-    .grid, .carousel { flex-direction: column; padding: 20px; }
-    .small-card, .wide-card, .tall-card { width: 100%; height: auto; }
-    form { width: 90%; }
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: #c0a878;
+    color: #111;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #a8855a;
+}
+
+/* ===============================
+   ANIMATIONS
+================================= */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===============================
+   RESPONSIVE
+================================= */
+@media (max-width: 1024px) {
+    .wide-card { width: 100%; }
+}
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    header nav {
+        justify-content: center;
+    }
+
+    .grid,
+    .carousel {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .small-card,
+    .wide-card,
+    .tall-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .card img {
+        height: 220px;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    .modal-content {
+        margin: 30px auto;
+        padding: 20px;
+    }
 }
