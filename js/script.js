@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modal-title");
@@ -7,20 +7,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector(".close");
     const cards = document.querySelectorAll(".card");
 
+    if (!modal || !modalTitle || !modalText || !modalImg) return;
+
     /* ==========================
        OPEN MODAL
     ========================== */
-    cards.forEach(card => {
-        card.addEventListener("click", () => {
+    cards.forEach(function (card) {
+        card.addEventListener("click", function () {
 
             const img = card.querySelector("img");
+            if (!img) return;
 
-            modalTitle.textContent = card.dataset.title;
-            modalText.textContent = card.dataset.content;
+            modalTitle.textContent = card.dataset.title || "";
+            modalText.textContent = card.dataset.content || "";
             modalImg.src = img.src;
-            modalImg.alt = img.alt;
+            modalImg.alt = img.alt || "";
 
-            modal.style.display = "block";
+            modal.classList.add("show");
             document.body.classList.add("modal-open");
         });
     });
@@ -29,21 +32,27 @@ document.addEventListener("DOMContentLoaded", () => {
        CLOSE MODAL
     ========================== */
     function closeModal() {
-        modal.style.display = "none";
+        modal.classList.remove("show");
         document.body.classList.remove("modal-open");
-        modalImg.src = "";
+
+        // Clear image after animation
+        setTimeout(function () {
+            modalImg.src = "";
+        }, 200);
     }
 
-    closeBtn.addEventListener("click", closeModal);
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closeModal);
+    }
 
-    window.addEventListener("click", e => {
+    modal.addEventListener("click", function (e) {
         if (e.target === modal) {
             closeModal();
         }
     });
 
-    window.addEventListener("keydown", e => {
-        if (e.key === "Escape") {
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("show")) {
             closeModal();
         }
     });
@@ -51,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ==========================
        FADE-IN ON SCROLL
     ========================== */
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
+    const observer = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
                 observer.unobserve(entry.target);
@@ -62,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         threshold: 0.15
     });
 
-    cards.forEach(card => {
+    cards.forEach(function (card) {
         observer.observe(card);
     });
 
