@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SahityaBitt - Poetries</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">SahityaBitt</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="poetries.html">Poetries</a>
+            <a href="stories.html">Stories</a>
+            <a href="custom.html">Custom Orders</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="grid-section">
+        <h2>Poetries</h2>
+        <div class="grid">
+            <!-- Repeat 30 poem cards with different data-title and data-content -->
+            <div class="card small-card" data-title="Mystic Valley" data-content="In the valley of whispers, secrets of time linger...">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="">
+                <div class="card-text">
+                    <h3>Mystic Valley</h3>
+                    <p>A mysterious land where echoes wander.</p>
+                </div>
+            </div>
+            <div class="card wide-card" data-title="Silence of the Rain" data-content="Raindrops falling like soft lullabies on the earth...">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="">
+                <div class="card-text">
+                    <h3>Silence of the Rain</h3>
+                    <p>Peaceful drops that calm the mind.</p>
+                </div>
+            </div>
+            <!-- Add 28 more cards -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 SahityaBitt. All rights reserved.</p>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <img id="modal-img" src="" alt="">
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
