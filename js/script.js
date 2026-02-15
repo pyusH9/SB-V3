@@ -1,30 +1,69 @@
-// Modal
-const modal = document.getElementById("modal");
-const modalTitle = document.getElementById("modal-title");
-const modalText = document.getElementById("modal-text");
-const modalImg = document.getElementById("modal-img");
-const closeBtn = document.querySelector(".close");
+document.addEventListener("DOMContentLoaded", () => {
 
-document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
-        modal.style.display = "block";
-        modalTitle.innerText = card.dataset.title;
-        modalText.innerText = card.dataset.content;
-        const img = card.querySelector("img");
-        modalImg.src = img.src;
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalText = document.getElementById("modal-text");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.querySelector(".close");
+    const cards = document.querySelectorAll(".card");
+
+    /* ==========================
+       OPEN MODAL
+    ========================== */
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+
+            const img = card.querySelector("img");
+
+            modalTitle.textContent = card.dataset.title;
+            modalText.textContent = card.dataset.content;
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+
+            modal.style.display = "block";
+            document.body.classList.add("modal-open");
+        });
     });
-});
 
-closeBtn.addEventListener("click", () => { modal.style.display = "none"; });
-window.addEventListener("click", e => { if(e.target === modal){ modal.style.display = "none"; }});
+    /* ==========================
+       CLOSE MODAL
+    ========================== */
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open");
+        modalImg.src = "";
+    }
 
-// Fade-in on scroll
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('visible');
+    closeBtn.addEventListener("click", closeModal);
+
+    window.addEventListener("click", e => {
+        if (e.target === modal) {
+            closeModal();
         }
     });
-}, { threshold: 0.1 });
 
-document.querySelectorAll(".card").forEach(card => { observer.observe(card); });
+    window.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+            closeModal();
+        }
+    });
+
+    /* ==========================
+       FADE-IN ON SCROLL
+    ========================== */
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+
+});
