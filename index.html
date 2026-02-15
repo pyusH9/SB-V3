@@ -1,78 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SahityaBitt - Home</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Dancing+Script&family=Merriweather&family=Lora&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SahityaBitt - Home</title>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lora&family=Merriweather&display=swap" rel="stylesheet">
+<style>
+/* Basic carousel and layout styling */
+body { margin:0; font-family: 'Lora', serif; background:#f8f8f8; color:#333; }
+header { display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:#1c1c1c; color:#fff; }
+header nav a { margin:0 10px; color:#fff; text-decoration:none; font-weight:500; }
+header .logo { font-size:1.8em; font-family:'Playfair Display', serif; }
+.hero { position:relative; overflow:hidden; }
+.carousel { display:flex; transition: transform 0.5s ease; }
+.carousel-slide { min-width:100%; box-sizing:border-box; position:relative; }
+.carousel-slide img { width:100%; height:500px; object-fit:cover; display:block; }
+.carousel-text { position:absolute; bottom:30px; left:50px; color:#fff; background:rgba(0,0,0,0.4); padding:20px; border-radius:10px; max-width:60%; }
+section { padding:60px 30px; text-align:center; }
+section h2 { font-family:'Playfair Display', serif; font-size:2em; margin-bottom:20px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:30px; }
+.card { background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.1); transition:transform 0.3s; }
+.card img { width:100%; display:block; height:200px; object-fit:cover; }
+.card h3 { margin:15px; font-size:1.2em; }
+.card p { margin:0 15px 15px; font-size:0.95em; color:#666; }
+.card:hover { transform:translateY(-5px); }
+.btn { display:inline-block; margin-top:20px; padding:10px 25px; background:#1c1c1c; color:#fff; text-decoration:none; border-radius:5px; transition:0.3s; }
+.btn:hover { background:#333; }
+.cta { background:#1c1c1c; color:#fff; }
+footer { background:#222; color:#fff; padding:20px 30px; text-align:center; }
+footer .social a { margin:0 8px; display:inline-block; }
+footer .social img { width:24px; filter:brightness(0) invert(1); }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">SahityaBitt</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="poetries.html">Poetries</a>
-            <a href="stories.html">Stories</a>
-            <a href="custom.html">Custom Orders</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Welcome to SahityaBitt</h1>
-            <p>Poetry and stories from the heart</p>
+<header>
+    <div class="logo">SahityaBitt</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="poetries.html">Poetries</a>
+        <a href="stories.html">Stories</a>
+        <a href="custom.html">Custom Orders</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO CAROUSEL -->
+<section class="hero">
+    <div class="carousel" id="carousel">
+        <div class="carousel-slide">
+            <img src="https://source.unsplash.com/1200x500/?books,writing,nepal" alt="Books and Stories">
+            <div class="carousel-text">
+                <h1>Welcome to SahityaBitt</h1>
+                <p>A world of poetries, stories, and creative journeys</p>
+                <a href="stories.html" class="btn">Explore Stories</a>
+            </div>
         </div>
-    </section>
-
-    <!-- Featured Poems Carousel -->
-    <section class="featured">
-        <h2>Featured Poems</h2>
-        <div class="carousel">
-            <div class="card wide-card" data-title="Whispers of the Himalayas" data-content="High upon the peaks, where the cold winds sigh...">
-                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGltYWxheWFzfGVufDB8fDB8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400" alt="">
-                <div class="card-text">
-                    <h3>Whispers of the Himalayas</h3>
-                    <p>A journey among snowy peaks, echoes of silence.</p>
-                </div>
+        <div class="carousel-slide">
+            <img src="https://source.unsplash.com/1200x500/?poetry,pen" alt="Writing Poetry">
+            <div class="carousel-text">
+                <h1>Discover Poetries</h1>
+                <p>Where emotions meet words and verses come alive.</p>
+                <a href="poetries.html" class="btn">View Poetries</a>
             </div>
-            <div class="card tall-card" data-title="Moonlit Solace" data-content="Beneath the moon's gentle glow, hearts find peace...">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW9vbiUyMG5pZ2h0fGVufDB8fDB8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400" alt="">
-                <div class="card-text">
-                    <h3>Moonlit Solace</h3>
-                    <p>Gentle moonlight guiding restless souls.</p>
-                </div>
-            </div>
-            <div class="card small-card" data-title="Autumn's Embrace" data-content="Leaves fall like golden memories...">
-                <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YXV0dW1uJTIwbGVhdmVzfGVufDB8fDB8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400" alt="">
-                <div class="card-text">
-                    <h3>Autumn's Embrace</h3>
-                    <p>Falling leaves and quiet reflections.</p>
-                </div>
-            </div>
-            <!-- Add 3 more featured cards similarly -->
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 SahityaBitt. All rights reserved.</p>
-    </footer>
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modal-title"></h2>
-            <img id="modal-img" src="" alt="">
-            <p id="modal-text"></p>
+        <div class="carousel-slide">
+            <img src="https://source.unsplash.com/1200x500/?story,tale" alt="Stories">
+            <div class="carousel-text">
+                <h1>Immersive Stories</h1>
+                <p>Journey through tales that linger in memory.</p>
+                <a href="stories.html" class="btn">Explore Stories</a>
+            </div>
         </div>
     </div>
+</section>
 
-    <script src="js/script.js"></script>
+<!-- ABOUT SECTION -->
+<section class="about">
+    <h2>About SahityaBitt</h2>
+    <p>SahityaBitt is a platform where words come alive. From heartfelt poetries to timeless stories, we celebrate the power of imagination. Our mission is to give voice to emotions, thoughts, and dreams through literary art.</p>
+</section>
+
+<!-- FEATURED POETRIES -->
+<section class="featured">
+    <h2>Featured Poetries</h2>
+    <div class="grid">
+        <article class="card">
+            <img src="https://source.unsplash.com/400x400/?poetry,writing" alt="Poetry 1">
+            <h3>Whispers of the Night</h3>
+            <p>Explore the gentle musings that flutter in the quiet of midnight.</p>
+        </article>
+        <article class="card">
+            <img src="https://source.unsplash.com/400x400/?poem,pen" alt="Poetry 2">
+            <h3>Echoes of Heart</h3>
+            <p>A journey through emotions that linger long after words are read.</p>
+        </article>
+        <article class="card">
+            <img src="https://source.unsplash.com/400x400/?book,poetry" alt="Poetry 3">
+            <h3>Golden Horizons</h3>
+            <p>Sunsets, dreams, and the poetry of everyday moments captured in verse.</p>
+        </article>
+    </div>
+    <a href="poetries.html" class="btn">View All Poetries</a>
+</section>
+
+<!-- FEATURED STORIES -->
+<section class="featured">
+    <h2>Featured Stories</h2>
+    <div class="grid">
+        <article class="card">
+            <img src="https://source.unsplash.com/400x400/?story,tale" alt="Story 1">
+            <h3>The Last Letter of Basantapur</h3>
+            <p>A forgotten postbox, a promise, and a square that remembers.</p>
+        </article>
+        <article class="card">
+            <img src="https://source.unsplash.com/400x400/?sunset,hill" alt="Story 2">
+            <h3>The Girl Who Collected Sunsets</h3>
+            <p>She stored golden skies in glass jars.</p>
+        </article>
+        <article class="card">
+            <img src="https://source.unsplash.com/400x400/?clock,old" alt="Story 3">
+            <h3>The Clockmaker of Patan</h3>
+            <p>He fixed time but never chased it.</p>
+        </article>
+    </div>
+    <a href="stories.html" class="btn">View All Stories</a>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta">
+    <h2>Want a Custom Story or Poem?</h2>
+    <p>Share your ideas, emotions, or memories, and we’ll craft something unique for you.</p>
+    <a href="custom.html" class="btn">Place an Order</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">SahityaBitt</div>
+        <p>&copy; 2026 SahityaBitt. All rights reserved.</p>
+        <div class="social">
+            <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook"></a>
+            <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png" alt="Instagram"></a>
+            <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png" alt="Twitter"></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Simple Carousel Logic
+let carousel = document.getElementById('carousel');
+let index = 0;
+setInterval(() => {
+    index++;
+    if(index >= carousel.children.length) index = 0;
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+}, 5000);
+</script>
+
 </body>
 </html>
