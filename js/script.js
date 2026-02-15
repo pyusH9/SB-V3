@@ -74,5 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
     cards.forEach(function (card) {
         observer.observe(card);
     });
+const sizeClasses = ["size-small","size-medium","size-large","size-wide"];
+document.querySelectorAll(".card").forEach(card => {
+    const random = sizeClasses[Math.floor(Math.random()*sizeClasses.length)];
+    card.classList.add(random);
+});
 
 });
