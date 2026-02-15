@@ -1,0 +1,124 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-color: #f5f0e6;
+    color: #2b1f0f;
+    scroll-behavior: smooth;
+}
+header {
+    background-color: #111;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+header nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+header nav a:hover { color: #c0a878; }
+
+.hero {
+    background-image: url('https://images.unsplash.com/photo-1542551765-df8ce1c3c020?w=1600');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 3em; margin: 0;}
+.hero p { font-size: 1.5em; }
+
+.grid, .carousel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px;
+    justify-content: center;
+}
+.card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #fffaf0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.card img {
+    width: 100%;
+    display: block;
+}
+.card-text { padding: 10px; }
+.small-card { width: 200px; }
+.wide-card { width: 420px; }
+.tall-card { width: 200px; height: 400px; }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0,0,0,0.8);
+}
+.modal-content {
+    background-color: #f5f0e6;
+    margin: 50px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+    color: #2b1f0f;
+    text-align: center;
+}
+.modal-content img { width: 100%; margin-bottom: 20px; }
+.close {
+    color: #111;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover { color: #c0a878; }
+
+footer {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Scroll Fade-in Animation */
+.card { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.card.visible { opacity: 1; transform: translateY(0); }
+
+/* Forms */
+form { display: flex; flex-direction: column; gap: 10px; width: 50%; margin: auto; }
+input, textarea, button { padding: 10px; border-radius: 5px; border: 1px solid #c0a878; font-family: inherit; }
+button { background-color: #c0a878; color: #111; border: none; cursor: pointer; transition: background 0.3s; }
+button:hover { background-color: #a8855a; }
+
+/* Responsive */
+@media(max-width:768px){
+    header { flex-direction: column; gap: 10px; }
+    .grid, .carousel { flex-direction: column; padding: 20px; }
+    .small-card, .wide-card, .tall-card { width: 100%; height: auto; }
+    form { width: 90%; }
+}
